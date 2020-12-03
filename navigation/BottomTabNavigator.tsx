@@ -6,8 +6,10 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import TabTwoScreen from '../screens/Jobs/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+
+import JobDetail from '../screens/Jobs/JobDetail'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -57,7 +59,7 @@ function TabOneNavigator() {
     </TabOneStack.Navigator>
   );
 }
-
+const Stack = createStackNavigator();
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function TabTwoNavigator() {
@@ -68,6 +70,7 @@ function TabTwoNavigator() {
         component={TabTwoScreen}
         options={{ headerTitle: 'Tab Two Title' }}
       />
+      <Stack.Screen name="JobDetail" component={ JobDetail }/> 
     </TabTwoStack.Navigator>
   );
 }

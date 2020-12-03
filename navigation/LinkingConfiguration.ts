@@ -16,6 +16,11 @@ export default {
               TabTwoScreen: 'two',
             },
           },
+          JobDetail: {
+            screens: {
+              JobDetail: 'JobDetail',
+            },
+          },
         },
       },
       NotFound: '*',

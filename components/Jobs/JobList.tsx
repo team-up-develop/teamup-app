@@ -1,13 +1,49 @@
 import React from 'react';
 import { FC } from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
+import { Job } from '../../types';
+
+type Props = { 
+  props: Job,
+  jobTitle: string,
+  jobDescription: string | null,
+  user: any, 
+  devStartDate: Date, 
+  devEndDate: Date,
+  onPress: any
+}
+
+//* オブジェクトスプレッド演算子
+// * props 親から子にデータを送る
+const ListItem: FC<Props> = ({ 
+  props,
+  jobTitle, 
+  jobDescription, 
+  user, 
+  devStartDate, 
+  devEndDate,
+  onPress
+}) => {
+
+  return (
+    <TouchableOpacity style={ styles.itemContainer } onPress={ onPress }>
+      <Text style={ styles.subText }>{ jobTitle }</Text>
+      <Text style={ styles.subText }>{ jobDescription }</Text>
+      {/* <Text style={ styles.subText }>{ user }</Text> */}
+      <Text style={ styles.subText }>{ devStartDate }</Text>
+      <Text style={ styles.subText }>{ devEndDate }</Text>
+    </TouchableOpacity>
+  )
+}
+
+export default ListItem;
 
 const styles = StyleSheet.create({
   itemContainer: {
-    height: 100,
+    height: 350,
     borderColor: 'gray',
     borderWidth: 1,
-    flexDirection: "row" //*横並び  //*column 縦並び 
+    flexDirection: "column" //*横並び  //*column 縦並び 
   },
   leftContainer: {
     width: 100
@@ -26,21 +62,3 @@ const styles = StyleSheet.create({
     color: 'gray'
   }
 });
-
-type HeaderProps = { jobTitle: any, jobDescription: any, user: any, devStartDate: any, devEndDate: any }
-
-//* オブジェクトスプレッド演算子
-// * props 親から子にデータを送る
-const ListItem: FC<HeaderProps> = ({ jobTitle, jobDescription, user, devStartDate, devEndDate }) => {
-  return (
-    <View style={ styles.itemContainer }>
-      <Text style={ styles.subText }>{ jobTitle }</Text>
-      <Text style={ styles.subText }>{ jobDescription }</Text>
-      {/* <Text style={ styles.subText }>{ user }</Text> */}
-      <Text style={ styles.subText }>{ devStartDate }</Text>
-      <Text style={ styles.subText }>{ devEndDate }</Text>
-    </View>
-  )
-}
-
-export default ListItem;
