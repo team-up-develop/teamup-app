@@ -1,1 +1,1 @@
-# teamUp-app
+# teamup-app
