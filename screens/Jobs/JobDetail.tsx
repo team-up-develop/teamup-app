@@ -7,13 +7,8 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 const JobDetail: FC<any> = ({ route }) => {
   const job = route.params.jobs;
 
-  console.log("aaaaaaaaaaaaaaaa")
-  console.log(route.params)
-  console.log("aaaaaaaaaaaaaaaa")
-
   return (
     <View>
-      <Text>aaaaaaaa</Text>
       <Text>{ job.jobTitle }</Text>
       <Text>{ job.jobDescription }</Text>
       <Text>{ job.devStartDate }</Text>
