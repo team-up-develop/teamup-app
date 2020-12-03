@@ -39,7 +39,7 @@ export default function TabTwoScreen({ navigation }) {
             user={ item.user }
             devStartDate={ item.devStartDate }
             devEndDate={ item.devEndDate }
-            onPress={() => navigation.navigate("JobDetail", { article: item })}
+            onPress={() => navigation.navigate("JobDetail", { jobs: item })}
           />
         )}
         keyExtractor={(item, index) => index.toString()}

@@ -5,7 +5,11 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 //  TODO: Any 
 const JobDetail: FC<any> = ({ route }) => {
-  const job = route.params.article;
+  const job = route.params.jobs;
+
+  console.log("aaaaaaaaaaaaaaaa")
+  console.log(route.params)
+  console.log("aaaaaaaaaaaaaaaa")
 
   return (
     <View>
