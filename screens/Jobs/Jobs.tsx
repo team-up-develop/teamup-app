@@ -11,7 +11,7 @@ type Props = {
   navigation: any,
 }
 
-const Jobs: FC<Props> = ({ navigation }) => {
+const JobsScreen: FC<Props> = ({ navigation }) => {
 
   const [jobs, setJobs] = useState<Job[]>([]); 
   useEffect(() => { 
@@ -52,7 +52,7 @@ const Jobs: FC<Props> = ({ navigation }) => {
   );
 }
 
-export default Jobs;
+export default JobsScreen;
 
 const styles = StyleSheet.create({
   container: {

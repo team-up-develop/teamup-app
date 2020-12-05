@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -6,10 +7,15 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/Jobs/Jobs';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
-
+import JobsScreen from '../screens/Jobs/Jobs';
+import ProfileScreen from '../screens/User/Profile';
 import JobDetail from '../screens/Jobs/JobDetail'
+import { 
+  BottomTabParamList,
+  TabOneParamList, 
+  JobsParamList,
+  UserParamsList 
+} from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -28,10 +34,17 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="開発一覧"
         component={JobsNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome size={24}  name="list" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="アカウント"
+        component={UserNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <FontAwesome name="user-o" size={24} color={color} />
         }}
       />
     </BottomTab.Navigator>
@@ -59,18 +72,30 @@ function TabOneNavigator() {
     </TabOneStack.Navigator>
   );
 }
-const Stack = createStackNavigator();
-const JobsStack = createStackNavigator<TabTwoParamList>();
 
+const JobsStack = createStackNavigator<JobsParamList>();
+const Stack = createStackNavigator();
 function JobsNavigator() {
   return (
     <JobsStack.Navigator>
       <JobsStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
+        name="JobsScreen"
+        component={JobsScreen}
         options={{ headerTitle: 'Tab Two Title' }}
       />
       <Stack.Screen name="JobDetail" component={ JobDetail }/> 
     </JobsStack.Navigator>
   );
+}
+
+const UserStack = createStackNavigator<UserParamsList>();
+function UserNavigator() {
+  return (
+    <UserStack.Navigator>
+      <UserStack.Screen 
+        name="ProfileScreen"
+        component={ProfileScreen}
+      />
+    </UserStack.Navigator>
+  )
 }

@@ -5,17 +5,24 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   TabOne: undefined;
-  TabTwo: undefined;
+  "開発一覧": undefined;
+  "アカウント": undefined;
 };
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type JobsParamList = {
+  JobsScreen: undefined;
   JobDetail: undefined;
 };
+
+export type UserParamsList = {
+  ProfileScreen: undefined;
+}
+
+
 
 export type Job = {
   createdAt: Date;
@@ -33,6 +40,6 @@ export type Job = {
   skill: any;
   updatedAt: Date;
   useMenter?: boolean;
-  user: User;
+  user: any; //TODO: 仮で any
   userId: number;
 }
