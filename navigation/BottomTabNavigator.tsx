@@ -6,7 +6,7 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/Jobs/TabTwoScreen';
+import TabTwoScreen from '../screens/Jobs/Jobs';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 import JobDetail from '../screens/Jobs/JobDetail'
@@ -29,7 +29,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoNavigator}
+        component={JobsNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -60,17 +60,17 @@ function TabOneNavigator() {
   );
 }
 const Stack = createStackNavigator();
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const JobsStack = createStackNavigator<TabTwoParamList>();
 
-function TabTwoNavigator() {
+function JobsNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
+    <JobsStack.Navigator>
+      <JobsStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
         options={{ headerTitle: 'Tab Two Title' }}
       />
       <Stack.Screen name="JobDetail" component={ JobDetail }/> 
-    </TabTwoStack.Navigator>
+    </JobsStack.Navigator>
   );
 }

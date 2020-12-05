@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 
 // import EditScreenInfo from '../components/EditScreenInfo';
@@ -7,8 +7,11 @@ import JobList from '../../components/Jobs/JobList';
 import axios from 'axios';
 import { Job } from '../../types';
 
+type Props = { 
+  navigation: any,
+}
 
-export default function TabTwoScreen({ navigation }) {
+const Jobs: FC<Props> = ({ navigation }) => {
 
   const [jobs, setJobs] = useState<Job[]>([]); 
   useEffect(() => { 
@@ -20,7 +23,7 @@ export default function TabTwoScreen({ navigation }) {
       const response = await axios.get('http://localhost:8888/api/v1/job');
       const arrayJobs = response.data;
       setJobs(arrayJobs);
-      console.log(arrayJobs); //* dataの確認
+      // console.log(arrayJobs); //* dataの確認
     } catch (error) {
       console.error(error);
     }
@@ -48,6 +51,8 @@ export default function TabTwoScreen({ navigation }) {
     </View>
   );
 }
+
+export default Jobs;
 
 const styles = StyleSheet.create({
   container: {
