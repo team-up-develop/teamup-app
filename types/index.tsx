@@ -3,27 +3,30 @@ export type RootStackParamList = {
   NotFound: undefined;
 };
 
+// * Bottomの型宣言
 export type BottomTabParamList = {
   TabOne: undefined;
   "開発一覧": undefined;
   "アカウント": undefined;
+  "管理": undefined;
 };
 
+// * createStackNavigator に渡す 型宣言
 export type TabOneParamList = {
   TabOneScreen: undefined;
 };
-
 export type JobsParamList = {
   JobsScreen: undefined;
   JobDetail: undefined;
 };
-
 export type UserParamsList = {
   ProfileScreen: undefined;
 }
+export type ManageParamsList = {
+  ManageScreen: undefined;
+}
 
-
-
+// * Job
 export type Job = {
   createdAt: Date;
   deletedAt: null | Date;

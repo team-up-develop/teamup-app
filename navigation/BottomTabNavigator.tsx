@@ -6,15 +6,21 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+
+// * Navigatorに置いての Component の import
 import TabOneScreen from '../screens/TabOneScreen';
 import JobsScreen from '../screens/Jobs/Jobs';
 import ProfileScreen from '../screens/User/Profile';
-import JobDetail from '../screens/Jobs/JobDetail'
+import JobDetail from '../screens/Jobs/JobDetail';
+import ManageScreen from '../screens/Manages/Manage';
+
+// * Navigator の 型宣言 を import
 import { 
   BottomTabParamList,
   TabOneParamList, 
   JobsParamList,
-  UserParamsList 
+  UserParamsList,
+  ManageParamsList
 } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -41,6 +47,13 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
+        name="管理"
+        component={ManagerNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <FontAwesome name="home" size={24} color={color} />
+        }}
+      />
+      <BottomTab.Screen
         name="アカウント"
         component={UserNavigator}
         options={{
@@ -51,14 +64,10 @@ export default function BottomTabNavigator() {
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
 function TabBarIcon(props: { name: string; color: string }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
@@ -72,7 +81,7 @@ function TabOneNavigator() {
     </TabOneStack.Navigator>
   );
 }
-
+// * 案件一覧 Navigator
 const JobsStack = createStackNavigator<JobsParamList>();
 const Stack = createStackNavigator();
 function JobsNavigator() {
@@ -87,7 +96,19 @@ function JobsNavigator() {
     </JobsStack.Navigator>
   );
 }
-
+// * 管理画面 Navigator
+const ManageStack = createStackNavigator<ManageParamsList>();
+function ManagerNavigator() {
+  return (
+    <ManageStack.Navigator>
+      <ManageStack.Screen 
+        name="ManageScreen"
+        component={ManageScreen}
+      />
+    </ManageStack.Navigator>
+  )
+}
+// * プロフィール Navigator
 const UserStack = createStackNavigator<UserParamsList>();
 function UserNavigator() {
   return (
