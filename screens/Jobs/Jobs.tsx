@@ -6,6 +6,7 @@ import { Text, View } from '../../components/Themed';
 import JobList from '../../components/Jobs/JobList';
 import axios from 'axios';
 import { Job } from '../../types';
+import { Card, Title, Paragraph } from 'react-native-paper';
 
 type Props = { 
   navigation: any,
@@ -30,8 +31,6 @@ const JobsScreen: FC<Props> = ({ navigation }) => {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>開発一覧</Text>
-      {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
       <FlatList
         data={ jobs }
         renderItem={({ item }) => (
@@ -42,6 +41,9 @@ const JobsScreen: FC<Props> = ({ navigation }) => {
             user={ item.user }
             devStartDate={ item.devStartDate }
             devEndDate={ item.devEndDate }
+            programingLanguage={ item.programingLanguage }
+            programingFramework={ item.programingFramework }
+            skill={ item.skill }
             onPress={() => navigation.navigate("JobDetail", { jobs: item })}
           />
         )}
@@ -60,10 +62,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
+
   separator: {
     marginVertical: 30,
     height: 1,
