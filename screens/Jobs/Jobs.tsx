@@ -2,9 +2,10 @@ import React, { FC, useState, useEffect } from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 // import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-import JobList from '../../components/Jobs/JobList';
+import JobList from '../../components/Organisms/Jobs/JobList';
 import axios from 'axios';
 import { Job } from '../../types';
+import Master from '../../master'
 
 type Props = { 
   navigation: any,
@@ -19,9 +20,8 @@ const JobsScreen: FC<Props> = ({ navigation }) => {
 
   const fetch = async () => {
     try {
-      const response = await axios.get('http://localhost:8888/api/v1/job');
-      const arrayJobs = response.data;
-      setJobs(arrayJobs);
+      const response = await axios.get(`${Master.API}/job`);
+      setJobs(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -41,7 +41,7 @@ const JobsScreen: FC<Props> = ({ navigation }) => {
             programingLanguage={ item.programingLanguage }
             programingFramework={ item.programingFramework }
             skill={ item.skill }
-            onPress={() => navigation.navigate("JobDetail", { jobs: item })}
+            onPress={() => navigation.navigate("案件詳細", { jobs: item })}
           />
         )}
         keyExtractor={(item, index) => index.toString()}

@@ -13,6 +13,7 @@ import JobsScreen from '../screens/Jobs/Jobs';
 import ProfileScreen from '../screens/User/Profile';
 import JobDetail from '../screens/Jobs/JobDetail';
 import ManageScreen from '../screens/Manages/Manage';
+import ManageJobDetail from '../screens/Manages/ManageJobDetail';
 
 // * Navigator の 型宣言 を import
 import { 
@@ -92,7 +93,7 @@ function JobsNavigator() {
         component={JobsScreen}
         options={{ headerTitle: '探す' }}
       />
-      <Stack.Screen name="JobDetail" component={ JobDetail }/> 
+      <Stack.Screen name="案件詳細" component={ JobDetail }/> 
     </JobsStack.Navigator>
   );
 }
@@ -104,7 +105,9 @@ function ManagerNavigator() {
       <ManageStack.Screen 
         name="ManageScreen"
         component={ManageScreen}
+        options={{ headerTitle: '管理' }}
       />
+      <Stack.Screen name="管理案件詳細" component={ ManageJobDetail }/> 
     </ManageStack.Navigator>
   )
 }

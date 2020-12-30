@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
-import { Card, Title, Paragraph, Chip } from 'react-native-paper';
-import { Job, Language, Framework, Skill } from '../../types';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Card, Title, Paragraph } from 'react-native-paper';
+import { Job, Language, Framework, Skill } from '../../../types';
 import dayjs from 'dayjs';
-import theme from '../../constants/Theme';
+import theme from '../../../constants/Theme';
+import LanguageLabel from '../../Atoms/LanguageLabel';
+import FrameworkLabel from '../../Atoms/FrameworkLabel';
+import SkillLabel from '../../Atoms/SkillLabel';
 
-type Props = { 
+type Props = {
   props: Job,
   jobTitle: string,
   jobDescription: string | null,
@@ -35,17 +38,17 @@ const ListItem: FC<Props> = ({
 
   const ProgramingLanguage: any = () => {
     for(let i = 0; i < programingLanguage.length; i++) {
-      return programingLanguage.map((value: Language) => <View key={value.id} style={ styles.language }><Text style={ styles.onText }>{value.programingLanguageName}</Text></View>)
+      return programingLanguage.map((value: Language) => <LanguageLabel props={value} key={value.id}/>)
     }
   }
   const ProgramingFramework: any = () => {
     for(let i = 0; i < programingFramework.length; i++) {
-      return programingFramework.map((value: Framework) => <View key={value.id} style={ styles.framework }><Text style={ styles.onText }>{value.programingFrameworkName}</Text></View>)
+      return programingFramework.map((value: Framework) => <FrameworkLabel props={value} key={value.id} />)
     }
   }
   const Skill: any = () => {
     for(let i = 0; i < skill.length; i++) {
-      return skill.map((value: Skill) => <View key={value.id} style={ styles.skill }><Text style={ styles.onText }>{value.skillName}</Text></View>)
+      return skill.map((value: Skill) => <SkillLabel props={value} key={value.id}/>)
     }
   }
 
@@ -78,44 +81,9 @@ const styles = StyleSheet.create({
     flexDirection: "column", //*横並び  //*column 縦並び 
     maxHeight: 300,
   },
-  onText:{
-    fontSize: 14,
-    color: theme.colors.white,
-    fontWeight: "600",
-  },
   skillArea: {
     flexDirection: 'row',
     flexWrap: 'wrap'
-  },
-  language: {
-    paddingTop: 2,
-    paddingBottom: 2,
-    paddingLeft: 8,
-    paddingRight: 8,
-    marginTop: 2,
-    marginRight: 2,
-    backgroundColor: theme.colors.purple,
-    borderRadius: 10
-  },
-  framework: {
-    paddingTop: 2,
-    paddingBottom: 2,
-    paddingLeft: 8,
-    paddingRight: 8,
-    marginTop: 2,
-    marginRight: 2,
-    backgroundColor: theme.colors.blue,
-    borderRadius: 10,
-  },
-  skill: {
-    paddingTop: 2,
-    paddingBottom: 2,
-    paddingLeft: 8,
-    paddingRight: 8,
-    marginTop: 2,
-    marginRight: 2,
-    backgroundColor: theme.colors.darkGreen,
-    borderRadius: 10,
   },
   dayArea: {
     position: 'absolute',
