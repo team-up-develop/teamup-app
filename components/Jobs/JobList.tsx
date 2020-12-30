@@ -1,8 +1,9 @@
-import React from 'react';
-import { FC } from 'react'
+import React, { FC } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
 import { Card, Title, Paragraph, Chip } from 'react-native-paper';
 import { Job, Language, Framework, Skill } from '../../types';
+import dayjs from 'dayjs';
+import theme from '../../constants/Theme';
 
 type Props = { 
   props: Job,
@@ -57,6 +58,9 @@ const ListItem: FC<Props> = ({
           <View style={ styles.skillArea }>
             <ProgramingLanguage /><ProgramingFramework /><Skill />
           </View>
+          <View style={ styles.dayArea }>
+            <Text style={ styles.day }>{ dayjs(devStartDate).format('YYYY-MM-DD') }</Text>
+          </View>
         </Card.Content>
       </Card>
       {/* <Text style={ styles.subText }>{ jobDescription }</Text> */}
@@ -74,18 +78,9 @@ const styles = StyleSheet.create({
     flexDirection: "column", //*横並び  //*column 縦並び 
     maxHeight: 300,
   },
-  leftContainer: {
-    width: 100
-  },
-  rightContainer: {
-    flex: 1, //* スペースを使い切る
-    padding: 10, 
-    justifyContent: "space-between", //* 間を開ける 
-    borderColor: "blue"
-  },
   onText:{
     fontSize: 14,
-    color: 'white',
+    color: theme.colors.white,
     fontWeight: "600",
   },
   skillArea: {
@@ -99,7 +94,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     marginTop: 2,
     marginRight: 2,
-    backgroundColor: '#651FFF',
+    backgroundColor: theme.colors.purple,
     borderRadius: 10
   },
   framework: {
@@ -109,7 +104,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     marginTop: 2,
     marginRight: 2,
-    backgroundColor: '#2196F3',
+    backgroundColor: theme.colors.blue,
     borderRadius: 10,
   },
   skill: {
@@ -119,7 +114,17 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     marginTop: 2,
     marginRight: 2,
-    backgroundColor: '#0097A7',
+    backgroundColor: theme.colors.darkGreen,
     borderRadius: 10,
+  },
+  dayArea: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    marginBottom: 10,
+    marginRight: 10,
+  },
+  day: {
+    color: theme.colors.textSubColor
   }
 });

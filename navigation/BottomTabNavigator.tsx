@@ -43,7 +43,7 @@ export default function BottomTabNavigator() {
         name="開発一覧"
         component={JobsNavigator}
         options={{
-          tabBarIcon: ({ color }) => <FontAwesome size={24}  name="list" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome size={24}  name="search" color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -90,7 +90,7 @@ function JobsNavigator() {
       <JobsStack.Screen
         name="JobsScreen"
         component={JobsScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: '探す' }}
       />
       <Stack.Screen name="JobDetail" component={ JobDetail }/> 
     </JobsStack.Navigator>

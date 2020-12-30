@@ -1,12 +1,10 @@
 import React, { FC, useState, useEffect } from 'react';
 import { StyleSheet, FlatList } from 'react-native';
-
 // import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import JobList from '../../components/Jobs/JobList';
 import axios from 'axios';
 import { Job } from '../../types';
-import { Card, Title, Paragraph } from 'react-native-paper';
 
 type Props = { 
   navigation: any,
@@ -24,7 +22,6 @@ const JobsScreen: FC<Props> = ({ navigation }) => {
       const response = await axios.get('http://localhost:8888/api/v1/job');
       const arrayJobs = response.data;
       setJobs(arrayJobs);
-      // console.log(arrayJobs); //* dataの確認
     } catch (error) {
       console.error(error);
     }
