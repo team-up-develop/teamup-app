@@ -1,31 +1,17 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 // import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+import { View } from '../../components/Themed';
 import JobList from '../../components/Organisms/Jobs/JobList';
-import axios from 'axios';
-import { Job } from '../../types';
-import Master from '../../master'
+import useQueryJobs from '../../hooks/useQueryJobs'
 
 type Props = { 
   navigation: any,
 }
 
 const JobsScreen: FC<Props> = ({ navigation }) => {
+  const jobs = useQueryJobs();
 
-  const [jobs, setJobs] = useState<Job[]>([]); 
-  useEffect(() => { 
-    fetch();
-  }, []);
-
-  const fetch = async () => {
-    try {
-      const response = await axios.get(`${Master.API}/job`);
-      setJobs(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
   return (
     <View style={styles.container}>
       <FlatList

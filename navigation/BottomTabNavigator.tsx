@@ -14,14 +14,15 @@ import ProfileScreen from '../screens/User/Profile';
 import JobDetail from '../screens/Jobs/JobDetail';
 import ManageScreen from '../screens/Manages/Manage';
 import ManageJobDetail from '../screens/Manages/ManageJobDetail';
-
+import JobCreate from '../screens/Jobs/JobCreate'
 // * Navigator の 型宣言 を import
 import { 
   BottomTabParamList,
   TabOneParamList, 
   JobsParamList,
   UserParamsList,
-  ManageParamsList
+  ManageParamsList,
+  JobCreateNavigatorType
 } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -94,6 +95,7 @@ function JobsNavigator() {
         options={{ headerTitle: '探す' }}
       />
       <Stack.Screen name="案件詳細" component={ JobDetail }/> 
+      <Stack.Screen name="案件作成" component={ JobCreate }/> 
     </JobsStack.Navigator>
   );
 }
@@ -119,6 +121,7 @@ function UserNavigator() {
       <UserStack.Screen 
         name="ProfileScreen"
         component={ProfileScreen}
+        options={{ headerTitle: 'プロフィール' }}
       />
     </UserStack.Navigator>
   )

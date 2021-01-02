@@ -25,6 +25,9 @@ export type UserParamsList = {
 export type ManageParamsList = {
   ManageScreen: undefined;
 }
+export type JobCreateNavigatorType = {
+  JobCreate: undefined;
+}
 
 // * Job
 export type Job = {

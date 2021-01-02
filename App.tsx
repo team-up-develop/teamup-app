@@ -9,7 +9,8 @@ import { FAB } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 import theme from './constants/Theme';
 
-export default function App() {
+
+export default function App(navigation: any) {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
@@ -24,7 +25,7 @@ export default function App() {
           style={styles.fab}
           // small
           icon="plus"
-          onPress={() => console.log('Pressed')}
+          onPress={() => navigation.navigate("案件作成")}
         />
       </SafeAreaProvider>
     );

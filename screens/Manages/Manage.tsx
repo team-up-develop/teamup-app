@@ -1,29 +1,15 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC } from 'react'
 import { StyleSheet, FlatList } from 'react-native';
-import axios from 'axios';
 import { View } from '../../components/Themed';
 import JobList from '../../components/Organisms/Jobs/JobList';
-import Master from '../../master'
+import useQueryManageJobs from '../../hooks/useQueryManageJobs';
 
 type Props = { 
   navigation: any,
 }
 
 const ManageScreen: FC<Props> = ({ navigation }) => {
-
-  const [manageJobs, setManageJobs] = useState<any[]>([]); 
-  useEffect(() => { 
-    fetch();
-  }, []);
-
-  const fetch = async () => {
-    try {
-      const response = await axios.get(`${Master.API}/job/?user_id=1`);
-      setManageJobs(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const manageJobs = useQueryManageJobs();
 
   return (
     <View style={styles.container}>
