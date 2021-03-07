@@ -1,27 +1,24 @@
-import React, { FC } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
-import theme from '../../constants/Theme'
-import { Language } from '../../types/index';
+import React, { FC } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import theme from "../../constants/Theme";
+import { Language } from "../../types/index";
 
 type Props = {
-  props: Language,
-}
+  props: Language;
+};
 
-const LanguageLabel: FC<Props> = ({
-  props
-}) => {
+const LanguageLabel: FC<Props> = ({ props }) => {
   return (
-    <View style={ styles.language }>
-      <Text style={ styles.onText }>{ props.programingLanguageName }</Text>
+    <View style={styles.language}>
+      <Text style={styles.onText}>{props.name}</Text>
     </View>
-  )
-}
+  );
+};
 
 export default LanguageLabel;
 
-
 const styles = StyleSheet.create({
-  onText:{
+  onText: {
     fontSize: 14,
     color: theme.colors.white,
     fontWeight: "600",
@@ -34,6 +31,6 @@ const styles = StyleSheet.create({
     marginTop: 2,
     marginRight: 2,
     backgroundColor: theme.colors.purple,
-    borderRadius: 10
+    borderRadius: 10,
   },
 });

@@ -6,9 +6,9 @@ export type RootStackParamList = {
 // * Bottomの型宣言
 export type BottomTabParamList = {
   TabOne: undefined;
-  "開発一覧": undefined;
-  "アカウント": undefined;
-  "管理": undefined;
+  開発一覧: undefined;
+  アカウント: undefined;
+  管理: undefined;
 };
 
 // * createStackNavigator に渡す 型宣言
@@ -21,58 +21,51 @@ export type JobsParamList = {
 };
 export type UserParamsList = {
   ProfileScreen: undefined;
-}
+};
 export type ManageParamsList = {
   ManageScreen: undefined;
-}
+};
 export type JobCreateNavigatorType = {
   JobCreate: undefined;
-}
+};
 
 // * Job
 export type Job = {
-  createdAt: Date;
-  deletedAt: null | Date;
-  devEndDate: Date;
-  devStartDate: Date;
+  created_at: Date;
+  deleted_at: null | Date;
+  dev_end_date: Date;
+  dev_start_date: Date;
   id: number;
-  jobDescription: string | null;
+  job_description: string | null;
   jobStatusId: 1;
-  jobTitle: string;
-  programingFramework: any;
-  programingLanguage: any;
+  job_title: string;
+  programing_frameworks: any;
+  programing_languages: any;
   publicationPeriod: Date;
   recruitmentNumbers: number;
-  skill: any;
+  skills: any;
   updatedAt: Date;
-  useMenter?: boolean;
   user: any; //TODO: 仮で any
   userId: number;
-}
+};
 
 // * 開発言語
 export interface Language {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date | null;
-  programingLanguageName: string;
+  updated_at: Date | null;
+  name: string;
 }
 
 // * フレームワーク
 export interface Framework {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date | null;
-  programingFrameworkName: string;
+  updated_at: Date | null;
+  name: string;
 }
 
 // * その他スキル
 export interface Skill {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date | null;
-  skillName: string;
+  updated_at: Date | null;
+  name: string;
 }

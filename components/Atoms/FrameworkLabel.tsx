@@ -1,27 +1,24 @@
-import React, { FC } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
-import theme from '../../constants/Theme'
-import { Framework } from '../../types/index';
+import React, { FC } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import theme from "../../constants/Theme";
+import { Framework } from "../../types/index";
 
 type Props = {
-  props: Framework,
-}
+  props: Framework;
+};
 
-const FrameworkLabel: FC<Props> = ({
-  props
-}) => {
+const FrameworkLabel: FC<Props> = ({ props }) => {
   return (
-    <View style={ styles.language }>
-      <Text style={ styles.onText }>{ props.programingFrameworkName }</Text>
+    <View style={styles.language}>
+      <Text style={styles.onText}>{props.name}</Text>
     </View>
-  )
-}
+  );
+};
 
 export default FrameworkLabel;
 
-
 const styles = StyleSheet.create({
-  onText:{
+  onText: {
     fontSize: 14,
     color: theme.colors.white,
     fontWeight: "600",
@@ -34,6 +31,6 @@ const styles = StyleSheet.create({
     marginTop: 2,
     marginRight: 2,
     backgroundColor: theme.colors.blue,
-    borderRadius: 10
+    borderRadius: 10,
   },
 });
